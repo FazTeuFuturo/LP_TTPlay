@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TTPlay - A Plataforma Completa para Gestão de Tênis de Mesa</title>
+    <meta name="description" content="Transforme a gestão dos seus campeonatos de tênis de mesa. Automatize inscrições, gere chaves, acompanhe rankings e conecte toda a comunidade em uma plataforma profissional.">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052CC;
+            --secondary: #00D4AA;
+            --dark: #0A1628;
+            --dark-light: #1A2B45;
+            --gray: #64748B;
+            --gray-light: #F1F5F9;
+            --white: #FFFFFF;
+            --gradient: linear-gradient(135deg, #0066FF 0%, #00D4AA 100%);
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Header/Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-cta {
+            background: var(--gradient);
+            color: white;
+            padding: 0.75rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(0, 102, 255, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            padding: 6rem 2rem 4rem;
+            background: linear-gradient(135deg, #0A1628 0%, #1A2B45 100%);
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(0, 212, 170, 0.2);
+            color: var(--secondary);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(0, 212, 170, 0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF 0%, #00D4AA 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 3rem;
+            line-height: 1.8;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 102, 255, 0.4);
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 102, 255, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Problem Section */
+        .problem {
+            padding: 6rem 2rem;
+            background: var(--gray-light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--gray);
+            line-height: 1.8;
+        }
+
+        .problems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .problem-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .problem-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .problem-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .problem-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .problem-card p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Solution Section */
+        .solution {
+            padding: 6rem 2rem;
+            background: white;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .feature-card {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(0, 102, 255, 0.3);
+        }
+
+        .feature-content h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
+
+        .feature-content p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* Stats Section */
+        .stats {
+            padding: 5rem 2rem;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item h2 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 2rem;
+            background: var(--dark);
+            color: white;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .benefit-card {
+            background: var(--dark-light);
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            border-color: var(--secondary);
+            transform: translateY(-5px);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--secondary);
+        }
+
+        .benefit-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.7;
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 6rem 2rem;
+            background: var(--gray-light);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 4rem auto 0;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+        }
+
+        .pricing-card.featured {
+            border: 3px solid var(--primary);
+            transform: scale(1.05);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .pricing-card.featured:hover {
+            transform: translateY(-10px) scale(1.07);
+        }
+
+        .pricing-badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .pricing-price {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1.5rem 0;
+        }
+
+        .pricing-price span {
+            font-size: 1.2rem;
+            color: var(--gray);
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin: 2rem 0;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid var(--gray-light);
+            color: var(--dark);
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            color: var(--secondary);
+            font-weight: bold;
+            margin-right: 0.8rem;
+        }
+
+        /* CTA Section */
+        .final-cta {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, #0A1628 0%, #1A2B45 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .final-cta h2 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .final-cta p {
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: rgba(255, 255, 255, 0.7);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer p {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .final-cta h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.8s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">TTPlay</div>
+            <a href="/" class="nav-cta">Começar Agora</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <span class="hero-badge">🏓 Plataforma Premium para Tênis de Mesa</span>
+            <h1 class="animate-in">Chega de Planilhas. Gerencie Seus Torneios de Tênis de Mesa do Início ao Fim.</h1>
+            <p class="hero-subtitle">
+                A plataforma completa para organizadores e clubes. Automatize inscrições e pagamentos, 
+                gere chaves profissionais com um clique e ofereça uma experiência premium aos seus atletas.
+            </p>
+            <div class="cta-group">
+                <a href="/" class="btn-primary">Começar Gratuitamente</a>
+                <a href="#solucao" class="btn-secondary">Ver Como Funciona</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="problem">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">O Problema</div>
+                <h2 class="section-title">Organizar Torneios Não Deveria Consumir Todo Seu Tempo</h2>
+                <p class="section-description">
+                    Sabemos exatamente pelo que você passa: confirmações de PIX por WhatsApp, 
+                    erros na criação de chaves e dificuldade em comunicar resultados aos atletas.
+                </p>
+            </div>
+            <div class="problems-grid">
+                <div class="problem-card">
+                    <div class="problem-icon">�</div>
+                    <h3>Confusão nos Pagamentos</h3>
+                    <p>Receber PIX por WhatsApp, conferir um por um, cobrar quem não pagou... Um trabalho manual que toma horas do seu dia.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">🎯</div>
+                    <h3>Erro na Criação de Chaves</h3>
+                    <p>Fase de grupos, seeding, eliminação dupla... Criar chaves complexas no Excel é demorado e qualquer erro vira dor de cabeça.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">�</div>
+                    <h3>Comunicação Ineficiente</h3>
+                    <p>Avisar cada atleta sobre horários, resultados e próximos jogos manualmente. Mensagens se perdem e reclamações surgem.</p>
+                </div>
+                <div class="problem-card">
+                    <div class="problem-icon">⏰</div>
+                    <h3>Tempo Desperdiçado</h3>
+                    <p>Você quer organizar eventos incríveis, mas passa mais tempo com burocracia do que focando no que realmente importa.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solucao">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">A Solução</div>
+                <h2 class="section-title">TTPlay: Sua Central de Gestão Profissional</h2>
+                <p class="section-description">
+                    Uma plataforma completa que automatiza todo o processo, desde inscrições até resultados finais. 
+                    Profissionalismo e eficiência em cada etapa.
+                </p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-content">
+                        <h3>Inscrições Automatizadas</h3>
+                        <p>Atletas se inscrevem diretamente na plataforma. Sistema confirma pagamentos automaticamente. Você só acompanha.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <div class="feature-content">
+                        <h3>Chaves Profissionais</h3>
+                        <p>Gere chaves de eliminação simples, dupla ou grupos com um clique. Sistema respeita seeding e rankings automaticamente.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📈</div>
+                    <div class="feature-content">
+                        <h3>Rankings em Tempo Real</h3>
+                        <p>Sistema ELO automático que atualiza os rankings após cada partida. Histórico completo de cada atleta.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔔</div>
+                    <div class="feature-content">
+                        <h3>Notificações Inteligentes</h3>
+                        <p>Atletas recebem alertas sobre próximos jogos, resultados e atualizações. Comunicação profissional e automática.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👥</div>
+                    <div class="feature-content">
+                        <h3>Rede Social Esportiva</h3>
+                        <p>Atletas se conectam, compartilham treinos e desafiam uns aos outros. Engajamento contínuo entre torneios.</p>
+                    </div>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-content">
+                        <h3>100% Mobile</h3>
+                        <p>Acesse de qualquer lugar, tablet ou smartphone. Interface moderna e intuitiva para todas as idades.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h2>90%</h2>
+                    <p>Menos tempo organizando</p>
+                </div>
+                <div class="stat-item">
+                    <h2>100%</h2>
+                    <p>Automatizado</p>
+                </div>
+                <div class="stat-item">
+                    <h2>24/7</h2>
+                    <p>Disponível sempre</p>
+                </div>
+                <div class="stat-item">
+                    <h2>∞</h2>
+                    <p>Campeonatos simultâneos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Athletes Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--secondary);">Para Atletas</div>
+                <h2 class="section-title" style="color: white;">Encontre Torneios e Acompanhe Sua Evolução</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.7);">
+                    Cadastro 100% gratuito. Inscreva-se em torneios online, acompanhe seu ranking e conecte-se com a comunidade.
+                </p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🎯 Encontre Torneios</h3>
+                    <p>Veja todos os torneios disponíveis na sua região e se inscreva online em segundos. Pagamento seguro e confirmação automática.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📈 Acompanhe Seu Ranking</h3>
+                    <p>Sistema ELO atualizado automaticamente após cada partida. Veja seu histórico completo e evolução ao longo do tempo.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🔔 Fique Por Dentro</h3>
+                    <p>Receba notificações sobre seus próximos jogos, resultados das partidas e atualizações dos torneios em tempo real.</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>👥 Conecte-se</h3>
+                    <p>Faça parte da comunidade, desafie outros jogadores, compartilhe treinos e mantenha-se ativo entre os torneios.</p>
+                </div>
+            </div>
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="/" class="btn-primary">Criar Meu Perfil Grátis</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Planos</div>
+                <h2 class="section-title">Experimente Grátis. Evolua Quando Precisar.</h2>
+                <p class="section-description">
+                    Comece com 1 torneio completo gratuito. Sem cartão de crédito, sem compromisso.
+                </p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Plano Inicial</h3>
+                    <div class="pricing-price">Grátis<span></span></div>
+                    <ul class="pricing-features">
+                        <li><strong>1 Torneio Trial</strong> com todos recursos Pro</li>
+                        <li>Fase de Grupos, Seeding e mais</li>
+                        <li>Depois: torneios ilimitados em Eliminação Simples</li>
+                        <li>Inscrições e pagamentos online</li>
+                        <li>Taxa de plataforma: 11,5% por atleta</li>
+                    </ul>
+                    <a href="/" class="btn-primary">Começar Grátis</a>
+                </div>
+                <div class="pricing-card featured">
+                    <div class="pricing-badge">Melhor Custo-Benefício</div>
+                    <h3>Plano Pro</h3>
+                    <div class="pricing-price">R$ 29,90<span>/mês</span></div>
+                    <ul class="pricing-features">
+                        <li>Todos os recursos avançados desbloqueados</li>
+                        <li>Fase de Grupos, Dupla Eliminação, Seeding</li>
+                        <li>Torneios ilimitados</li>
+                        <li><strong>Taxa reduzida: apenas 7,5%</strong> por atleta</li>
+                        <li>Com 19 atletas, a economia já paga o plano</li>
+                        <li>Branding personalizado</li>
+                    </ul>
+                    <a href="/" class="btn-primary">Assinar Pro</a>
+                </div>
+                <div class="pricing-card">
+                    <h3>Para Atletas</h3>
+                    <div class="pricing-price">100% Grátis<span></span></div>
+                    <ul class="pricing-features">
+                        <li>Cadastro gratuito para sempre</li>
+                        <li>Perfil completo com histórico</li>
+                        <li>Inscrição em torneios online</li>
+                        <li>Acompanhamento de rankings</li>
+                        <li>Notificações de jogos e resultados</li>
+                        <li>Conexão com a comunidade</li>
+                    </ul>
+                    <a href="/" class="btn-primary">Criar Perfil Grátis</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="final-cta">
+        <div class="container">
+            <h2>Pronto para Revolucionar Seus Campeonatos?</h2>
+            <p>
+                Junte-se a centenas de clubes e milhares de atletas que já estão usando o TTPlay. 
+                Comece gratuitamente hoje e veja a diferença.
+            </p>
+            <a href="/" class="btn-primary">Criar Conta Grátis Agora</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p><strong>TTPlay</strong> - A Plataforma Completa para Gestão de Tênis de Mesa</p>
+            <p>&copy; 2025 TTPlay. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.problem-card, .feature-card, .benefit-card, .pricing-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
