@@ -1,10 +1,17 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TTPlay - A Plataforma Completa para Gestão de Tênis de Mesa</title>
     <meta name="description" content="Transforme a gestão dos seus campeonatos de tênis de mesa. Automatize inscrições, gere chaves, acompanhe rankings e conecte toda a comunidade em uma plataforma profissional.">
+
+    <meta property="og:title" content="TTPlay - Gestão Completa para Tênis de Mesa">
+    <meta property="og:description" content="Automatize inscrições, gere chaves, acompanhe rankings e conecte atletas.">
+    <meta property="og:image" content="https://URL_DA_SUA_IMAGEM_PREVIEW.jpg"> 
+    <meta property="og:url" content="https://tt-play-a-istudio.vercel.app/">
+    <meta property="og:type" content="website">
     <style>
         * {
             margin: 0;
@@ -481,6 +488,62 @@
         .footer p {
             margin-bottom: 0.5rem;
         }
+        
+       /* Estilo do Botão Flutuante do WhatsApp */
+        .whatsapp-fab {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25D366;
+            color: #FFF;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+            /* ===== A CORREÇÃO FORÇADA ESTÁ AQUI ===== */
+            /* Usando !important para garantir que o sublinhado saia */
+            text-decoration: none !important; 
+        }
+
+        .whatsapp-fab:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            
+            /* Adicionado aqui também por segurança */
+            text-decoration: none !important; 
+        }
+        
+        /* Estiliza o ícone <i> para ser maior (mantendo o tamanho) */
+        .whatsapp-fab i {
+            font-size: 40px; 
+            color: white;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            /* ... suas regras responsivas existentes ... */
+
+            /* Ajusta o botão do WhatsApp em telas menores */
+            .whatsapp-fab {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+           .whatsapp-fab i {
+        font-size: 30px;
+    }
+        }
+
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -513,6 +576,19 @@
             .final-cta h2 {
                 font-size: 2rem;
             }
+            
+            /* [NOVO] Ajusta o botão do WhatsApp em telas menores */
+            .whatsapp-fab {
+                width: 55px;
+                height: 55px;
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .whatsapp-fab svg {
+                width: 28px;
+                height: 28px;
+            }
         }
 
         /* Animations */
@@ -533,7 +609,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <nav class="nav">
             <div class="logo">TTPlay</div>
@@ -541,7 +616,6 @@
         </nav>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="hero-content">
             <span class="hero-badge">🏓 Plataforma Premium para Tênis de Mesa</span>
@@ -557,7 +631,6 @@
         </div>
     </section>
 
-    <!-- Problem Section -->
     <section class="problem">
         <div class="container">
             <div class="section-header">
@@ -570,7 +643,7 @@
             </div>
             <div class="problems-grid">
                 <div class="problem-card">
-                    <div class="problem-icon">�</div>
+                    <div class="problem-icon">💰</div>
                     <h3>Confusão nos Pagamentos</h3>
                     <p>Receber PIX por WhatsApp, conferir um por um, cobrar quem não pagou... Um trabalho manual que toma horas do seu dia.</p>
                 </div>
@@ -580,7 +653,7 @@
                     <p>Fase de grupos, seeding, eliminação dupla... Criar chaves complexas no Excel é demorado e qualquer erro vira dor de cabeça.</p>
                 </div>
                 <div class="problem-card">
-                    <div class="problem-icon">�</div>
+                    <div class="problem-icon">🗣️</div>
                     <h3>Comunicação Ineficiente</h3>
                     <p>Avisar cada atleta sobre horários, resultados e próximos jogos manualmente. Mensagens se perdem e reclamações surgem.</p>
                 </div>
@@ -593,7 +666,6 @@
         </div>
     </section>
 
-    <!-- Solution Section -->
     <section class="solution" id="solucao">
         <div class="container">
             <div class="section-header">
@@ -651,7 +723,6 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
     <section class="stats">
         <div class="container">
             <div class="stats-grid">
@@ -675,7 +746,6 @@
         </div>
     </section>
 
-    <!-- Athletes Section -->
     <section class="benefits">
         <div class="container">
             <div class="section-header">
@@ -709,7 +779,6 @@
         </div>
     </section>
 
-    <!-- Pricing Section -->
     <section class="pricing">
         <div class="container">
             <div class="section-header">
@@ -763,7 +832,6 @@
         </div>
     </section>
 
-    <!-- Final CTA -->
     <section class="final-cta">
         <div class="container">
             <h2>Pronto para Revolucionar Seus Campeonatos?</h2>
@@ -775,13 +843,21 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
             <p><strong>TTPlay</strong> - A Plataforma Completa para Gestão de Tênis de Mesa</p>
             <p>&copy; 2025 TTPlay. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+   <a href="https://wa.me/5521999998888?text=Ol%C3%A1%21+Gostaria+de+saber+mais+sobre+o+TTPlay." 
+   class="whatsapp-fab" 
+   target="_blank" 
+   aria-label="Fale conosco pelo WhatsApp">
+    
+   <i class="fa-brands fa-whatsapp"></i>
+
+</a>
 
     <script>
         // Smooth scroll for anchor links
