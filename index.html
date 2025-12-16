@@ -93,23 +93,42 @@
         }
 
         :root {
-            --primary: #6366F1;
-            --primary-dark: #4F46E5;
-            --primary-light: #818CF8;
+            /* Brand Colors - Blue Theme */
+            --primary: #3B82F6;
+            /* Vibrant Blue */
+            --primary-dark: #2563EB;
+            /* Darker Blue */
+            --primary-light: #60A5FA;
+            /* Lighter Blue */
+
+            /* Secondary/Accents */
             --secondary: #10B981;
+            /* Keep Green for success indicators */
             --secondary-dark: #059669;
             --accent: #F59E0B;
-            --accent-pink: #EC4899;
+            /* Keep Orange for warnings/highlights */
+
+            /* Neutrals - Slate Palette */
             --dark: #0F172A;
+            /* Slate 900 (Main BG) */
             --dark-light: #1E293B;
+            /* Slate 800 (Cards) */
             --dark-lighter: #334155;
-            --gray: #64748B;
+            /* Slate 700 (Borders/Hover) */
+            --gray: #94A3B8;
+            /* Slate 400 (Text) */
             --gray-light: #F1F5F9;
             --white: #FFFFFF;
-            --gradient-primary: linear-gradient(135deg, #667EEA 0%, #764BA2 100%);
-            --gradient-secondary: linear-gradient(135deg, #F093FB 0%, #F5576C 100%);
-            --gradient-ocean: linear-gradient(135deg, #4F46E5 0%, #06B6D4 50%, #10B981 100%);
-            --gradient-sunset: linear-gradient(135deg, #FF6B6B 0%, #FFE66D 100%);
+
+            /* Refresh Gradients - Subtle & Blue */
+            --gradient-primary: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+            /* Blue gradient */
+            --gradient-secondary: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            /* Dark subtle */
+            --gradient-ocean: linear-gradient(135deg, #3B82F6 0%, #60A5FA 100%);
+            /* Lighter Blue gradient */
+            --gradient-sunset: linear-gradient(135deg, #2563EB 0%, #1E293B 100%);
+            /* Blue to Dark */
         }
 
         body {
@@ -143,20 +162,24 @@
         .logo {
             font-size: 1.8rem;
             font-weight: 900;
-            background: var(--gradient-ocean);
+            letter-spacing: -0.05em;
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo span:first-child {
+            color: white;
+        }
+
+        .logo span:last-child {
+            background: linear-gradient(to right, #60A5FA, #2563EB);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            letter-spacing: -1px;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
         }
 
-        .logo::before {
-            content: '🏓';
-            font-size: 2rem;
-        }
+
 
         .nav-cta {
             background: var(--gradient-ocean);
@@ -212,10 +235,10 @@
             width: 200%;
             height: 200%;
             background:
-                radial-gradient(circle at 20% 50%, rgba(79, 70, 229, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(16, 185, 129, 0.3) 0%, transparent 50%),
-                radial-gradient(circle at 40% 20%, rgba(6, 182, 212, 0.2) 0%, transparent 50%);
-            animation: gradientShift 15s ease infinite;
+                radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(37, 99, 235, 0.15) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(96, 165, 250, 0.1) 0%, transparent 50%);
+            animation: gradientShift 20s ease infinite;
         }
 
         @keyframes gradientShift {
@@ -244,8 +267,8 @@
             bottom: 0;
             background-image:
                 radial-gradient(circle at 10% 20%, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-                radial-gradient(circle at 90% 80%, rgba(99, 102, 241, 0.1) 1px, transparent 1px),
-                radial-gradient(circle at 50% 50%, rgba(16, 185, 129, 0.1) 1px, transparent 1px);
+                radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.2) 1px, transparent 1px),
+                radial-gradient(circle at 50% 50%, rgba(37, 99, 235, 0.2) 1px, transparent 1px);
             background-size: 200px 200px, 300px 300px, 250px 250px;
             animation: particleFloat 20s linear infinite;
         }
@@ -271,14 +294,14 @@
             display: inline-flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(16, 185, 129, 0.15);
-            color: var(--secondary);
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--primary-light);
             padding: 0.7rem 1.8rem;
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 700;
             margin-bottom: 2.5rem;
-            border: 1px solid rgba(16, 185, 129, 0.3);
+            border: 1px solid rgba(59, 130, 246, 0.3);
             backdrop-filter: blur(10px);
             animation: pulse 3s ease-in-out infinite;
         }
@@ -300,7 +323,7 @@
             font-weight: 900;
             line-height: 1.1;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #A78BFA 50%, #10B981 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, #93C5FD 50%, #3B82F6 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -346,8 +369,9 @@
             text-decoration: none;
             font-weight: 800;
             font-size: 1.1rem;
+            font-size: 1.1rem;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 20px 50px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 20px 50px rgba(59, 130, 246, 0.3);
             display: inline-block;
             position: relative;
             overflow: hidden;
@@ -373,7 +397,7 @@
 
         .btn-primary:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 25px 60px rgba(79, 70, 229, 0.6);
+            box-shadow: 0 25px 60px rgba(59, 130, 246, 0.4);
         }
 
         .btn-secondary {
@@ -399,7 +423,7 @@
         /* Problem Section */
         .problem {
             padding: 8rem 2rem;
-            background: linear-gradient(180deg, var(--dark) 0%, #1a1f35 100%);
+            background: linear-gradient(180deg, var(--dark) 0%, #172554 100%);
             position: relative;
         }
 
@@ -485,16 +509,26 @@
 
         .problem-card:hover {
             transform: translateY(-10px) scale(1.02);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.2);
         }
 
         .problem-icon {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            display: block;
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             position: relative;
             z-index: 1;
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: #60A5FA;
+            border: 2px solid #60A5FA;
+            border-radius: 12px;
+            background: rgba(96, 165, 250, 0.1);
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3), inset 0 0 10px rgba(96, 165, 250, 0.1);
         }
 
         .problem-card h3 {
@@ -531,7 +565,7 @@
             display: flex;
             flex-direction: column;
             gap: 2rem;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
             padding: 3rem;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -558,8 +592,8 @@
 
         .feature-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 30px 70px rgba(79, 70, 229, 0.4);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 30px 70px rgba(59, 130, 246, 0.2);
         }
 
         .feature-icon {
@@ -572,7 +606,7 @@
             justify-content: center;
             font-size: 2.5rem;
             flex-shrink: 0;
-            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.2);
             position: relative;
             z-index: 1;
         }
@@ -652,7 +686,7 @@
         /* Benefits Section */
         .benefits {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #1a1f35 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, #0f172a 0%, var(--dark) 100%);
             color: white;
             position: relative;
         }
@@ -682,7 +716,7 @@
             left: -100%;
             width: 300%;
             height: 300%;
-            background: radial-gradient(circle, rgba(16, 185, 129, 0.2) 0%, transparent 70%);
+            background: radial-gradient(circle, rgba(59, 130, 246, 0.2) 0%, transparent 70%);
             transition: all 0.8s;
         }
 
@@ -692,15 +726,15 @@
         }
 
         .benefit-card:hover {
-            border-color: var(--secondary);
+            border-color: var(--primary);
             transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.3);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
         }
 
         .benefit-card h3 {
             font-size: 1.5rem;
             margin-bottom: 1.2rem;
-            color: var(--secondary);
+            color: var(--primary-light);
             font-weight: 800;
             position: relative;
             z-index: 1;
@@ -729,7 +763,7 @@
         }
 
         .pricing-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
             padding: 3.5rem;
             border-radius: 40px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -742,13 +776,13 @@
         .pricing-card.featured {
             border: 2px solid var(--primary);
             transform: scale(1.05);
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(16, 185, 129, 0.1) 100%);
-            box-shadow: 0 30px 80px rgba(79, 70, 229, 0.4);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(30, 58, 138, 0.1) 100%);
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.3);
         }
 
         .pricing-card:hover {
             transform: translateY(-15px) scale(1.03);
-            box-shadow: 0 30px 80px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.4);
             border-color: var(--primary);
         }
 
@@ -767,7 +801,7 @@
             border-radius: 50px;
             font-size: 0.9rem;
             font-weight: 800;
-            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 10px 30px rgba(59, 130, 246, 0.5);
             letter-spacing: 1px;
         }
 
@@ -815,7 +849,7 @@
 
         .pricing-features li::before {
             content: '✓';
-            color: var(--secondary);
+            color: var(--primary);
             font-weight: bold;
             margin-right: 1rem;
             font-size: 1.2rem;
@@ -824,7 +858,7 @@
         /* CTA Section */
         .final-cta {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #1a1f35 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, #0f172a 0%, var(--dark) 100%);
             color: white;
             text-align: center;
             position: relative;
@@ -838,7 +872,7 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle at 30% 50%, rgba(79, 70, 229, 0.3) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 50%, rgba(59, 130, 246, 0.3) 0%, transparent 50%);
             animation: gradientShift 10s ease infinite;
         }
 
@@ -846,7 +880,7 @@
             font-size: 3.8rem;
             font-weight: 900;
             margin-bottom: 2rem;
-            background: linear-gradient(135deg, #FFFFFF 0%, #A78BFA 100%);
+            background: linear-gradient(135deg, #FFFFFF 0%, #60A5FA 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             letter-spacing: -1px;
@@ -880,11 +914,20 @@
             font-size: 1.05rem;
         }
 
-        .footer strong {
+        .brand-text {
+            font-weight: 900;
+            letter-spacing: -0.05em;
+        }
+
+        .brand-text span:first-child {
             color: white;
-            background: var(--gradient-ocean);
+        }
+
+        .brand-text span:last-child {
+            background: linear-gradient(to right, #60A5FA, #2563EB);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         /* WhatsApp FAB */
@@ -944,7 +987,7 @@
         }
 
         .step-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
             padding: 3rem 2.5rem;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -971,8 +1014,8 @@
 
         .step-card:hover {
             transform: translateY(-10px);
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.4);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
         }
 
         .step-number {
@@ -990,7 +1033,7 @@
             font-size: 1.5rem;
             font-weight: 900;
             color: white;
-            box-shadow: 0 10px 30px rgba(79, 70, 229, 0.5);
+            box-shadow: 0 0 30px rgba(96, 165, 250, 0.5), 0 0 15px rgba(96, 165, 250, 0.3), inset 0 0 10px rgba(255, 255, 255, 0.2);
         }
 
         .step-icon {
@@ -1014,7 +1057,7 @@
         /* Comparison Section */
         .comparison {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #1a1f35 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, #0f172a 0%, var(--dark) 100%);
         }
 
         .comparison-grid {
@@ -1103,7 +1146,7 @@
         }
 
         .testimonial-card {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
             padding: 3rem;
             border-radius: 30px;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1118,7 +1161,7 @@
             top: 20px;
             left: 20px;
             font-size: 8rem;
-            color: rgba(99, 102, 241, 0.1);
+            color: rgba(59, 130, 246, 0.1);
             font-family: Georgia, serif;
             line-height: 1;
         }
@@ -1185,7 +1228,7 @@
         /* Founder Story Section */
         .founder-story {
             padding: 8rem 2rem;
-            background: linear-gradient(135deg, #1a1f35 0%, var(--dark) 100%);
+            background: linear-gradient(135deg, #0f172a 0%, var(--dark) 100%);
         }
 
         .founder-content {
@@ -1215,7 +1258,7 @@
             align-items: center;
             justify-content: center;
             font-size: 8rem;
-            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
             transition: transform 0.5s;
         }
 
@@ -1224,7 +1267,7 @@
             height: 380px;
             border-radius: 30px;
             object-fit: cover;
-            box-shadow: 0 20px 60px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
             transition: transform 0.5s;
         }
 
@@ -1248,7 +1291,7 @@
         }
 
         .founder-text strong {
-            color: var(--secondary);
+            color: var(--primary-light);
         }
 
         .founder-signature {
@@ -1293,8 +1336,8 @@
         }
 
         .faq-item:hover {
-            border-color: rgba(99, 102, 241, 0.5);
-            box-shadow: 0 10px 40px rgba(79, 70, 229, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
+            box-shadow: 0 10px 40px rgba(59, 130, 246, 0.2);
         }
 
         .faq-question {
@@ -1307,7 +1350,7 @@
         }
 
         .faq-question:hover {
-            background: rgba(99, 102, 241, 0.1);
+            background: rgba(59, 130, 246, 0.1);
         }
 
         .faq-question h3 {
@@ -1351,13 +1394,13 @@
         }
 
         .faq-answer strong {
-            color: var(--secondary);
+            color: var(--primary-light);
         }
 
         /* Trust Badges Section */
         .trust {
             padding: 4rem 2rem;
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(30, 58, 138, 0.05) 100%);
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -1394,15 +1437,18 @@
         }
 
         .trust-icon {
-            font-size: 3rem;
+            font-size: 2rem;
             width: 80px;
             height: 80px;
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(96, 165, 250, 0.1);
             border-radius: 20px;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: 2px solid #60A5FA;
+            color: #60A5FA;
+            font-weight: 900;
+            box-shadow: 0 0 20px rgba(96, 165, 250, 0.3), inset 0 0 10px rgba(96, 165, 250, 0.1);
         }
 
         .trust-badge p {
@@ -1529,14 +1575,14 @@
 <body>
     <header class="header">
         <nav class="nav">
-            <div class="logo">TTPlay</div>
+            <div class="logo"><span>TT</span><span>Play</span></div>
             <a href="https://app.ttplay.com.br" class="nav-cta">Começar Agora</a>
         </nav>
     </header>
 
     <section class="hero">
         <div class="hero-content">
-            <span class="hero-badge">🏓 Plataforma Premium para Tênis de Mesa</span>
+            <span class="hero-badge">Plataforma Premium para Tênis de Mesa</span>
             <h1>Chega de Planilhas. Gerencie Seus Torneios de Tênis de Mesa do Início ao Fim.</h1>
             <p class="hero-subtitle">
                 A plataforma completa para organizadores e clubes. Automatize inscrições e pagamentos,
@@ -1561,25 +1607,25 @@
             </div>
             <div class="problems-grid">
                 <div class="problem-card reveal">
-                    <div class="problem-icon">💰</div>
+                    <div class="problem-icon">$</div>
                     <h3>Confusão nos Pagamentos</h3>
                     <p>Receber PIX por WhatsApp, conferir um por um, cobrar quem não pagou... Um trabalho manual que
                         toma horas do seu dia.</p>
                 </div>
                 <div class="problem-card reveal">
-                    <div class="problem-icon">🎯</div>
+                    <div class="problem-icon">⚠</div>
                     <h3>Erro na Criação de Chaves</h3>
                     <p>Fase de grupos, seeding, eliminação dupla... Criar chaves complexas no Excel é demorado e
                         qualquer erro vira dor de cabeça.</p>
                 </div>
                 <div class="problem-card reveal">
-                    <div class="problem-icon">🗣️</div>
+                    <div class="problem-icon">✉</div>
                     <h3>Comunicação Ineficiente</h3>
                     <p>Avisar cada atleta sobre horários, resultados e próximos jogos manualmente. Mensagens se perdem e
                         reclamações surgem.</p>
                 </div>
                 <div class="problem-card reveal">
-                    <div class="problem-icon">⏰</div>
+                    <div class="problem-icon">⏱</div>
                     <h3>Tempo Desperdiçado</h3>
                     <p>Você quer organizar eventos incríveis, mas passa mais tempo com burocracia do que focando no que
                         realmente importa.</p>
@@ -1608,7 +1654,7 @@
                     </div>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">🎯</div>
+                    <div class="feature-icon">▣</div>
                     <div class="feature-content">
                         <h3>Chaves Profissionais</h3>
                         <p>Gere chaves de eliminação simples, dupla ou grupos com um clique. Sistema respeita seeding e
@@ -1616,7 +1662,7 @@
                     </div>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">📈</div>
+                    <div class="feature-icon">↗</div>
                     <div class="feature-content">
                         <h3>Rankings em Tempo Real</h3>
                         <p>Sistema ELO automático que atualiza os rankings após cada partida. Histórico completo de cada
@@ -1624,7 +1670,7 @@
                     </div>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">🔔</div>
+                    <div class="feature-icon">◉</div>
                     <div class="feature-content">
                         <h3>Notificações Inteligentes</h3>
                         <p>Atletas recebem alertas sobre próximos jogos, resultados e atualizações. Comunicação
@@ -1632,7 +1678,7 @@
                     </div>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">👥</div>
+                    <div class="feature-icon">◈</div>
                     <div class="feature-content">
                         <h3>Rede Social Esportiva</h3>
                         <p>Atletas se conectam, compartilham treinos e desafiam uns aos outros. Engajamento contínuo
@@ -1640,7 +1686,7 @@
                     </div>
                 </div>
                 <div class="feature-card reveal">
-                    <div class="feature-icon">📱</div>
+                    <div class="feature-icon">☰</div>
                     <div class="feature-content">
                         <h3>100% Mobile</h3>
                         <p>Acesse de qualquer lugar, tablet ou smartphone. Interface moderna e intuitiva para todas as
@@ -1687,28 +1733,27 @@
             <div class="steps-grid">
                 <div class="step-card reveal">
                     <div class="step-number">1</div>
-                    <div class="step-icon">📝</div>
                     <h3>Crie seu Torneio</h3>
                     <p>Configure nome, data, categorias e regras em menos de 5 minutos. Defina o valor da inscrição e
                         pronto.</p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">2</div>
-                    <div class="step-icon">👥</div>
+
                     <h3>Atletas se Inscrevem</h3>
                     <p>Compartilhe o link do torneio. Atletas se cadastram e pagam online. Sistema confirma
                         automaticamente.</p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">3</div>
-                    <div class="step-icon">🎯</div>
+
                     <h3>Gere as Chaves</h3>
                     <p>Um clique e o sistema gera as chaves automaticamente, respeitando seeding e categorias. Perfeito
                         toda vez.</p>
                 </div>
                 <div class="step-card reveal">
                     <div class="step-number">4</div>
-                    <div class="step-icon">🏆</div>
+
                     <h3>Acompanhe & Celebre</h3>
                     <p>Registre resultados em tempo real. Sistema atualiza chaves, rankings e notifica atletas
                         automaticamente.</p>
@@ -1727,30 +1772,28 @@
             <div class="comparison-grid">
                 <div class="comparison-card before reveal">
                     <div class="comparison-header">
-                        <span class="comparison-emoji">😫</span>
                         <h3>Antes do TTPlay</h3>
                     </div>
                     <ul class="comparison-list">
-                        <li>❌ 8+ horas organizando cada torneio</li>
-                        <li>❌ Conferir PIX manualmente no WhatsApp</li>
-                        <li>❌ Erros nas chaves e reclamações</li>
-                        <li>❌ Planilhas confusas e desatualizadas</li>
-                        <li>❌ Atletas perdidos sem informação</li>
-                        <li>❌ Estresse no dia do evento</li>
+                        <li>8+ horas organizando cada torneio</li>
+                        <li>Conferir PIX manualmente no WhatsApp</li>
+                        <li>Erros nas chaves e reclamações</li>
+                        <li>Planilhas confusas e desatualizadas</li>
+                        <li>Atletas perdidos sem informação</li>
+                        <li>Estresse no dia do evento</li>
                     </ul>
                 </div>
                 <div class="comparison-card after reveal">
                     <div class="comparison-header">
-                        <span class="comparison-emoji">😎</span>
                         <h3>Depois do TTPlay</h3>
                     </div>
                     <ul class="comparison-list">
-                        <li>✅ Menos de 1 hora de trabalho</li>
-                        <li>✅ Pagamentos confirmados automaticamente</li>
-                        <li>✅ Chaves perfeitas com 1 clique</li>
-                        <li>✅ Tudo centralizado e atualizado</li>
-                        <li>✅ Atletas recebem notificações automáticas</li>
-                        <li>✅ Foco total na experiência do evento</li>
+                        <li>Menos de 1 hora de trabalho</li>
+                        <li>Pagamentos confirmados automaticamente</li>
+                        <li>Chaves perfeitas com 1 clique</li>
+                        <li>Tudo centralizado e atualizado</li>
+                        <li>Atletas recebem notificações automáticas</li>
+                        <li>Foco total na experiência do evento</li>
                     </ul>
                 </div>
             </div>
@@ -1769,11 +1812,11 @@
             </div>
             <div class="testimonials-grid">
                 <div class="testimonial-card reveal">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"Antes eu gastava um dia inteiro só organizando inscrições e pagamentos.
                         Agora faço tudo em minutos. O TTPlay transformou completamente meus torneios!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">🏓</div>
+                        <div class="author-avatar">CM</div>
                         <div class="author-info">
                             <strong>Carlos Mendes</strong>
                             <span>Organizador • Clube Pinheiros SP</span>
@@ -1781,11 +1824,11 @@
                     </div>
                 </div>
                 <div class="testimonial-card reveal">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"Finalmente consigo acompanhar meu ranking e me inscrever em torneios
                         sem precisar ficar mandando mensagem. A plataforma é simples e funciona perfeitamente!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">👤</div>
+                        <div class="author-avatar">MS</div>
                         <div class="author-info">
                             <strong>Marina Silva</strong>
                             <span>Atleta • Rio de Janeiro RJ</span>
@@ -1793,11 +1836,11 @@
                     </div>
                 </div>
                 <div class="testimonial-card reveal">
-                    <div class="testimonial-stars">⭐⭐⭐⭐⭐</div>
+                    <div class="testimonial-stars">★★★★★</div>
                     <p class="testimonial-text">"Organizei meu primeiro torneio com 50 atletas sem nenhum erro. As
                         chaves foram geradas automaticamente e todos receberam notificações. Impressionante!"</p>
                     <div class="testimonial-author">
-                        <div class="author-avatar">🏓</div>
+                        <div class="author-avatar">RC</div>
                         <div class="author-info">
                             <strong>Rafael Costa</strong>
                             <span>Organizador • Belo Horizonte MG</span>
@@ -1854,22 +1897,22 @@
             </div>
             <div class="benefits-grid">
                 <div class="benefit-card reveal">
-                    <h3>🎯 Encontre Torneios</h3>
+                    <h3>Encontre Torneios</h3>
                     <p>Veja todos os torneios disponíveis na sua região e se inscreva online em segundos. Pagamento
                         seguro e confirmação automática.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <h3>📈 Acompanhe Seu Ranking</h3>
+                    <h3>Acompanhe Seu Ranking</h3>
                     <p>Sistema ELO atualizado automaticamente após cada partida. Veja seu histórico completo e evolução
                         ao longo do tempo.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <h3>🔔 Fique Por Dentro</h3>
+                    <h3>Fique Por Dentro</h3>
                     <p>Receba notificações sobre seus próximos jogos, resultados das partidas e atualizações dos
                         torneios em tempo real.</p>
                 </div>
                 <div class="benefit-card reveal">
-                    <h3>👥 Conecte-se</h3>
+                    <h3>Conecte-se</h3>
                     <p>Faça parte da comunidade, desafie outros jogadores, compartilhe treinos e mantenha-se ativo entre
                         os torneios.</p>
                 </div>
@@ -1946,7 +1989,7 @@
             <div class="faq-grid">
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>💰 O TTPlay é caro? Vale a pena o investimento?</h3>
+                        <h3>O TTPlay é caro? Vale a pena o investimento?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -1958,7 +2001,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>⏱️ É difícil de usar? Preciso de conhecimento técnico?</h3>
+                        <h3>É difícil de usar? Preciso de conhecimento técnico?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -1969,7 +2012,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>🔒 Meus dados e pagamentos estão seguros?</h3>
+                        <h3>Meus dados e pagamentos estão seguros?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -1980,7 +2023,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>😰 E se der problema no dia do torneio?</h3>
+                        <h3>E se der problema no dia do torneio?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -1991,7 +2034,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>👥 Os atletas vão reclamar de "mais uma plataforma"?</h3>
+                        <h3>Os atletas vão reclamar de "mais uma plataforma"?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2002,7 +2045,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>❌ Posso cancelar quando quiser?</h3>
+                        <h3>Posso cancelar quando quiser?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2013,7 +2056,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>💳 Como funcionam os pagamentos dos atletas?</h3>
+                        <h3>Como funcionam os pagamentos dos atletas?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2024,7 +2067,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>📱 Preciso baixar app ou funciona no navegador?</h3>
+                        <h3>Preciso baixar app ou funciona no navegador?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2035,7 +2078,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>🏓 Atletas precisam pagar para usar?</h3>
+                        <h3>Atletas precisam pagar para usar?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2046,7 +2089,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>🎯 Posso personalizar o visual com a marca do meu clube?</h3>
+                        <h3>Posso personalizar o visual com a marca do meu clube?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2056,7 +2099,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>🔄 Consigo importar dados de torneios anteriores?</h3>
+                        <h3>Consigo importar dados de torneios anteriores?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2066,7 +2109,7 @@
                 </div>
                 <div class="faq-item reveal">
                     <div class="faq-question">
-                        <h3>⏰ Quanto tempo leva para criar meu primeiro torneio?</h3>
+                        <h3>Quanto tempo leva para criar meu primeiro torneio?</h3>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
@@ -2083,22 +2126,22 @@
     <section class="trust">
         <div class="container">
             <div class="trust-content reveal">
-                <h3>🔐 Segurança & Confiança Garantidas</h3>
+                <h3>Segurança & Confiança Garantidas</h3>
                 <div class="trust-badges">
                     <div class="trust-badge">
-                        <div class="trust-icon">✅</div>
+                        <div class="trust-icon">✓</div>
                         <p>Criptografia SSL/TLS</p>
                     </div>
                     <div class="trust-badge">
-                        <div class="trust-icon">💳</div>
+                        <div class="trust-icon">₳</div>
                         <p>Pagamentos PCI Certificados</p>
                     </div>
                     <div class="trust-badge">
-                        <div class="trust-icon">🛡️</div>
+                        <div class="trust-icon">◆</div>
                         <p>99,9% Uptime</p>
                     </div>
                     <div class="trust-badge">
-                        <div class="trust-icon">📞</div>
+                        <div class="trust-icon">☏</div>
                         <p>Suporte Prioritário</p>
                     </div>
                 </div>
@@ -2119,7 +2162,8 @@
 
     <footer class="footer">
         <div class="container">
-            <p><strong>TTPlay</strong> - A Plataforma Completa para Gestão de Tênis de Mesa</p>
+            <p><span class="brand-text"><span>TT</span><span>Play</span></span> - A Plataforma Completa para Gestão de
+                Tênis de Mesa</p>
             <p>&copy; 2025 TTPlay. Todos os direitos reservados.</p>
         </div>
     </footer>
