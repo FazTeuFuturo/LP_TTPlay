@@ -140,9 +140,43 @@ O TTPlay é mais do que gestão - é a **rede social do tênis de mesa brasileir
 
 ## Modelo de Precificação
 
-- **Plano Gratuito:** Para organizadores iniciantes e eventos pequenos
-- **Plano Premium:** Recursos avançados para organizadores profissionais
-- **Plano Clube:** Solução completa para gestão de clubes
+### Para Organizadores de Torneios
+
+**Torneios Free (Grátis):**
+- 1 torneio trial completo com todos os recursos Pro
+- Depois: torneios ilimitados em Eliminação Simples
+- Taxa de plataforma: 11,5% por inscrição de atleta
+- Ideal para: organizadores iniciantes testando a plataforma
+
+**Torneios Pro (R$ 29,90/mês):**
+- Todos os formatos desbloqueados (Fase de Grupos, Dupla Eliminação, Seeding)
+- Torneios ilimitados
+- Taxa reduzida: 7,5% por inscrição de atleta
+- Branding personalizado (logo e cores do clube)
+- Ideal para: organizadores frequentes - com 19 atletas a economia já paga o plano
+
+### Para Gestores de Clubes
+
+**Gestão de Clubes (R$ 197/mês + 3%):**
+- Inclui todos os recursos do Torneios Pro
+- Gestão completa de mensalistas
+- Cobrança automática multicanal (PIX, Boleto, Cartão de Crédito)
+- Alertas de vencimento e relatórios de inadimplência
+- Dashboard financeiro em tempo real
+- Rankings internos do clube
+- Suporte prioritário por WhatsApp
+- Os 3% sobre mensalidades podem ser repassados ao atleta como "taxa de conveniência"
+- Ideal para: clubes que querem profissionalizar a gestão financeira
+
+### Para Atletas
+
+**Cadastro de Atleta (100% Gratuito para sempre):**
+- Perfil público com histórico de partidas e conquistas
+- Ranking atualizado automaticamente (sistema ELO)
+- Inscrição em torneios com pagamento online
+- Notificações de jogos, horários e resultados
+- Acesso à rede social e comunidade
+- Atletas só pagam a taxa de inscrição definida pelo organizador
 
 ## Links Importantes
 
