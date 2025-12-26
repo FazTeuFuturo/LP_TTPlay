@@ -30,7 +30,8 @@ export default function PlataformaTenisDeMesaPage() {
                     <div className="container">
                         <h1>A Plataforma Definitiva para Tênis de Mesa no Brasil</h1>
                         <p className="lead">
-                            Criada por quem vive o esporte, a TTPlay é o único sistema que integra torneios,
+                            A TTPlay é uma plataforma de gestão de torneios e clubes de tênis de mesa.
+                            Criada por quem vive o esporte, é o único sistema que integra torneios,
                             rankings, gestão de clubes e cobrança de mensalidades em uma única plataforma.
                         </p>
                     </div>
